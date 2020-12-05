@@ -1,0 +1,55 @@
+PP3 DESIGN REPORT
+Made by: Will Hofkamp, Ziwei Ren, Mitchell McClure
+
+Pinning Pages
+- During recursive search to find node with a certain lower bound, pages are pinned and then 
+- When done reading the currently pinned page, the next page is then pinned.
+
+Unpinning Pages
+- During insertion, if no split happens or is needed then the page is unpinned.
+- During the search for insertion location, page is pinned and unpinned while searching, then eventually unpinned
+- After inserting the node, the page is unpinned.
+- After the current node is split, the two new ones are then unpinned. 
+- If there is a key greater than the upper bound, the scan is complete and the pinned page is unpinned 
+- When a scan is ended, the pinned page is unpinned
+
+Efficiency
+- Our design is very efficient because the majority of the time and computational power is spent creating the relation. Because so much time is spent,
+- it allows for indexing and scanning to go much faster.
+
+Conditions that Affected Decisions
+- Duplicate Keys
+	We greatly worked to prevent duplicate keys because when nodes are split, if there are duplicates it could be disastrous. To prevent them, we continuously
+	searched through the tree until a key is found that is greater than the lower bound of the node.
+
+
+Tests
+- All additional tests are included in main.cpp. They are called in the main function. The detail of these tests are described below:
+
+- test4(): empty tree test
+	This test checks whether the output matches the expected output when scanning a empty B tree (i.e. relationSize = 0).
+
+- test5(): out of bound test
+	This test checks whether the output matches the expected output when scanning a B tree with relationSize set to be 5000.
+	This test finds keys that are not all in the range of input.
+
+- test6():  createRelationForward with large size test
+	This test checks whether the output matches the expected output when scanning a B tree with a very large relationSize.
+	In this test the relationSize is set to be 100000.
+	We use function createRelationForward_with_size(int size) to generate B tree.
+	This process might be slow. Please wait for several seconds before it finishes.
+
+- test7(): createRelationBackward with large size test
+	This test checks whether the output matches the expected output when scanning a B tree with a very large relationSize.
+	In this test the relationSize is set to be 100000.
+	We use function createRelationBackward_with_size(int size) to generate B tree.
+	This process might be slow. Please wait for several seconds before it finishes.
+
+- test8(): createRelationRandom with large size test
+	This test checks whether the output matches the expected output when scanning a B tree with a very large relationSize.
+	In this test the relationSize is set to be 100000.
+	We use function createRelationRandom_with_size(int size) to generate B tree.
+	This process might be slow. Please wait for several seconds before it finishes.
+
+- test9(): negative value test
+	This test checks whether the output matches the expected output when scanning a B tree with negative values in the relation.

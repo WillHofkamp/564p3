@@ -1,0 +1,5 @@
+Tests location:
+All additional tests are implemented in the main class
+
+Design Report location:
+In the 564p3 folder named design_report.txt
